@@ -10,6 +10,7 @@ import botocore
 
 # Variables
 s3BucketName = 'smartcams3'
+lambdaUrl = 'http://d123123123v.cloudfront.net/prod/smartcamTagPerson'
 collectionId = '2' # Unique user ID or similar, so faces are stored separately. This allows separate cameras to be used at separate locations.
 
 
@@ -75,7 +76,7 @@ def tag_person(intent, session, locale):
         # Only if a name was supplied by the user, do: 
         NameOfPerson = intent['slots']['NameOfPerson']['value']
         # Send request with name of person to smartcamTagPerson lambda function which will save the name of the person for the last face
-        result = requests.post('http://d35xafoveji7v.cloudfront.net/prod/smartcamTagPerson', data=NameOfPerson)
+        result = requests.post(lambdaUrl, data=NameOfPerson)
         
         # Build Alexa response
         reprompt_text = ""
