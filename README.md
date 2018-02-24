@@ -5,7 +5,7 @@ Project Description (including hardware setup, etc.): test
 
 AWS Setup: test
 
-Alexa Setup: test
+Alexa Setup: https://github.com/ikk0/smartcam/blob/master/alexa_setup.md
 
 Watch the video: [Video](https://vimeo.com/257284726)
 
