@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "slots": [
+        {
+          "name": "NameOfPerson",
+          "type": "LIST_OF_NAMES"
+        }
+      ],
+      "intent": "TagPersonIntent"
+    },
+    {
+      "intent": "WhoRangAtTheDoorIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
