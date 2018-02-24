@@ -14,7 +14,7 @@ Setup: Alexa Skill
 * "Sample Utterances": [Download here, then paste into field](https://github.com/ikk0/smartcam/blob/master/alexa/sample_utterances.txt)
 * Click "Next"
 * Tab "Configuration"
-* "Service Endpoint Type": Select "AWS Lambda ARN" and enter the ARN of your Lambda function (created during the [AWS Setup Guide](https://github.com/ikk0/smartcam/blob/master/aws_setup.md)), it will look something like this: "arn:aws:lambda:eu-west-1:132456789798:function:smartcamAlexa". Don't change any of the other settings.
+* "Service Endpoint Type": Select "AWS Lambda ARN" and enter the ARN of the "smartcamAlexa" Lambda function (created during the [AWS Setup Guide](https://github.com/ikk0/smartcam/blob/master/aws_setup.md)), it will look something like this: "arn:aws:lambda:eu-west-1:132456789798:function:smartcamAlexa". Don't change any of the other settings.
 * Click "Next"
 * Tab "Test"
 * You can test the skill there, everything should work fine. For example, enter "Alexa, ask smart camera who rang the door?"
