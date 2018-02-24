@@ -17,8 +17,18 @@ The settings must be made in the "EU (Ireland)" region (or any other region that
 * Function 1 / Name "smartcamAlexa" / Runtime: Python 2.7 / Code: https://raw.githubusercontent.com/ikk0/smartcam/master/aws/lambda/smartcamAlexa.py
 * Function 2 / Name "smartcamIdentifyPerson" / Runtime: Python 3.6 / Code: https://raw.githubusercontent.com/ikk0/smartcam/master/aws/lambda/smartcamIdentifyPerson.py
 * Function 3 / Name "smartcamTagPerson" / Runtime: Python 3.6 / Code: https://raw.githubusercontent.com/ikk0/smartcam/master/aws/lambda/smartcamTagPerson.py
+IMPORTANT: In each of the three functions, search for "smartcams3" (variable s3BucketName) and replace it with the bucket name you selected during S3 setup in the previous step.
 
 ### API Gateway Setup
+* Go to [API Gateway](https://eu-west-1.console.aws.amazon.com/apigateway/home)
+* Create a new API, give it any name. (A sample swagger schema can be seen [here](https://raw.githubusercontent.com/ikk0/smartcam/master/aws/api_gateway/swagger.json))
+* Create two new resources: smartcamIdentifyPerson and smartcamTagPerson
+* For each of the two resources, create two new methods. Type "ANY". 
+* Configure them as "Lambda Function" and enable "Use Lambda Proxy integration"
+* Select your Lambda region (previous setup, should be EU (Ireland) most likely) and enter the ARN of the two lambda functions you created, respectively matching the name.
+* In the "Settings" tab of your API, in the "Binary Media Types" section enter "image/jpeg"
+* Now go into the main API screen again and from the "Actions" dropdown select "Deploy API". Deploy to "production".
+* Now go into the "Stages" section and select the prod API. Write down the "Invoke URL" , it will look something like this: https://w12312331.execute-api.eu-central-1.amazonaws.com/prod
 
 #### CloudFront Setup
 As Arduino does not properly support HTTPS connections, we must set up a "proxy" server that is available via HTTP and forwards requests to our HTTPS-only lambda endpoint.
@@ -27,3 +37,5 @@ As Arduino does not properly support HTTPS connections, we must set up a "proxy"
 
 #### AWS Rekognition Setup
 Luckily, AWS Rekognition does not require any setup. ;-)
+
+Now, proceed setting up the [Alexa Skill](https://github.com/ikk0/smartcam/blob/master/alexa_setup.md).
