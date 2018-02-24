@@ -31,9 +31,23 @@ IMPORTANT: In each of the three functions, search for "smartcams3" (variable s3B
 * Now go into the "Stages" section and select the prod API. Write down the "Invoke URL" , it will look something like this: https://w12312331.execute-api.eu-central-1.amazonaws.com/prod
 
 #### CloudFront Setup
-As Arduino does not properly support HTTPS connections, we must set up a "proxy" server that is available via HTTP and forwards requests to our HTTPS-only lambda endpoint.
+As Arduino does not properly support HTTPS connections, we must set up a "proxy" server that is available via HTTP and forwards requests to our HTTPS-only API Gateway endpoint.
 * Go to [CloudFront](https://console.aws.amazon.com/cloudfront/home)
-* 
+* Set up a new CloudFront distribution, with the settings described [here](https://stackoverflow.com/a/44901263/1320365).
+* For the "Origin" field, enter the hostname you figured out as the "Invoke URL" in the last step of the previous "API Gateway" step, for example: w12312331.execute-api.eu-central-1.amazonaws.com
+* Save the CloudFront Distribution and wait for it to be distributed. Via CloudFront, our API we created in API Gateway can be called from HTTP (from the Arduino) now
+* Write down the hostname of the CloudFront distribution you created, for example: d123x23x23.cloudfront.net
+
+#### Update Lambda Function, Arduino code
+Now that we set up the CloudFront distribution, we must enter the URL to call our API into the Arduino code (so it can upload the image) as well as update the "smartcamAlexa" lambda function you created, so it can tag faces. 
+* Open the [Arduino Code](https://github.com/ikk0/smartcam/blob/master/arduino/camera_sketch.ino) and look for:
+response += "Host: d123x23x23.cloudfront.net\r\n";
+Replace the hostname (d123x23x23.cloudfront.net) with the hostname of YOUR CloudFront distribution.
+* Upload the sketch to your Arduino. Don't forget to update the IP settings, etc.
+* Open the "smartcamAlexa" lambda function and look for:
+lambdaUrl = 'http://d123123123v.cloudfront.net/prod/smartcamTagPerson'
+Again, replace the hostname (d123x23x23.cloudfront.net) with the hostname of YOUR CloudFront distribution.
+* Save the lambda function
 
 #### AWS Rekognition Setup
 Luckily, AWS Rekognition does not require any setup. ;-)
