@@ -1,0 +1,15 @@
+TagPersonIntent that the persons name is {NameOfPerson}
+TagPersonIntent that the person's name is {NameOfPerson}
+TagPersonIntent that the person's {NameOfPerson}
+TagPersonIntent that the person is {NameOfPerson}
+TagPersonIntent the person's {NameOfPerson}
+TagPersonIntent the person is called {NameOfPerson}
+TagPersonIntent the person's name is {NameOfPerson}
+TagPersonIntent the persons name is {NameOfPerson}
+TagPersonIntent that {NameOfPerson} rang at the door
+TagPersonIntent that {NameOfPerson} rang the door
+WhoRangAtTheDoorIntent who is there
+WhoRangAtTheDoorIntent who rang
+WhoRangAtTheDoorIntent who is at the door
+WhoRangAtTheDoorIntent who rang at the door
+WhoRangAtTheDoorIntent who rang the door
